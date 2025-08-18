@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scroll Showcase — 5 Sessions Video BG</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body,
+    html {
+      height: 100%;
+      width: 100%;
+    }
+    .session {
+      position: relative;
+      min-height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+    .bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      filter: brightness(1);
+    }
+    .content {
+      position: relative;
+      z-index: 2;
+      font-size: 2rem;
+      text-shadow: 0 2px 24px rgba(0, 0, 0, 0.7);
+      text-align: center;
+      max-width: 80vw;
+    }
+    @media (max-width: 700px) {
+      .content {
+        font-size: 1.2rem;
+      }
+    }
+    /* Glass-like transparent scroll arrow */
+    .scroll-arrow {
+      position: absolute;
+      left: 50%;
+      bottom: 30px;
+      transform: translateX(-50%);
+      z-index: 2;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      opacity: 0.55;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: bounce 2s infinite;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      transition: opacity 0.3s;
+      background: rgba(250, 158, 138, 0.55);
+    }
+    .scroll-arrow:hover {
+      opacity: 0.9;
+    }
+    .scroll-arrow svg {
+      stroke: rgba(255, 255, 255, 1);
+      stroke-width: 3;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    @keyframes bounce {
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      50% {
+        transform: translateX(-50%) translateY(15px);
+      }
+    }
+    /* Menu button */
+    .menu-btn {
+      gap: 2px;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(250, 158, 138, 0.55);
+      border: none;
+      cursor: pointer;
+      z-index: 100;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+    .menu-btn:hover {
+      background: rgba(250, 158, 138, 0.9);
+    }
+    .menu-btn span {
+      display: block;
+      width: 10px;
+      height: 4px;
+      background: white;
+      transition: all 0.3s;
+    }
+    /* Sidebar menu */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: -260px;
+      width: 170px;
+      height: 100%;
+      background: rgba(24, 24, 28, 0.95);
+      color: white;
+      box-shadow: -4px 0 20px rgba(0, 0, 0, 0.25);
+      padding-top: 60px;
+      transition: right 0.3s ease-in-out;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar.open {
+      right: 0;
+    }
+    .sidebar h3 {
+      margin: 0 0 16px 0;
+      font-weight: 600;
+      text-align: center;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0 20px;
+      flex-grow: 1;
+    }
+    .sidebar ul li {
+      margin: 14px 0;
+      font-size: 1rem;
+    }
+    .sidebar ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .sidebar ul li a:hover {
+      color: #e0b203;
+    }
+    .sidebar .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 28px;
+      background: transparent;
+      border: none;
+      color: white;
+      cursor: pointer;
+      z-index: 210;
+    }
+    .corner-image {
+      position: absolute;
+      top: 30px;    /* distance from top */
+      left: 30px;   /* distance from left */
+      z-index: 3;   /* above video bg */
+    }
+    .corner-image img {
+      width: 80%;  /* adjust size as needed */
+      height: auto;
+    }
+    /* Session 5 specific styles */
+    .video-slider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 40px;
+      z-index: 2;
+      position: relative;
+      min-height: 300px; /* prevent shrink on mobile */
+    }
+    .video-wrapper {
+      text-align: center;
+      max-width: 680px;
+      flex-shrink: 0;
+    }
+    .video-description {
+      margin-top: 12px;
+      font-size: 1.1rem;
+      color: #fff;
+      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+      min-height: 2.2em;
+    }
+    /* Arrow button styling */
+    .arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      font-size: 2.2rem;
+      background: rgba(255, 166, 150, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 2px solid rgba(250,158,138,0.25);
+      border-radius: 50%;
+      color: #fff;
+      opacity: 0.7;
+      transition: opacity 0.3s, transform 0.15s;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+    }
+    .arrow:hover {
+      opacity: 0.93;
+    }
+    .arrow.bounce {
+      animation: bounceArrow 0.6s;
+    }
+    @keyframes bounceArrow {
+      0% { transform: scale(1) translateY(0); }
+      30% { transform: scale(1.2) translateY(-5px);}
+      50% { transform: scale(0.85) translateY(10px);}
+      80% { transform: scale(1.05) translateY(-4px);}
+      100% { transform: scale(1) translateY(0);}
+    }
+    .video-description {
+      margin-top: 5px;
+      font-size: 1.15rem;
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      color: #fff;
+      background: rgba(32, 32, 32, 0.65);
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
+      padding: 5px 15px;
+      border-radius: 18px;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.7);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.16);
+      display: inline-block;
+      min-height: 2em;
+      letter-spacing: 0.02em;
+    }
+    .image-container {
+      z-index: 2;
+      margin-top: 50px; /* Space between video and image */
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .image-container img {
+      display: block;
+      max-width: 90vw;
+      height: auto;
+    }
+    @media (max-width: 700px) {
+      .content {
+        font-size: 1.2rem;
+      }
+      .video-wrapper video {
+        width: 90vw !important;
+        height: auto !important;
+      }
+      .video-slider {
+        gap: 12px;
+      }
+      .arrow {
+        width: 44px;
+        height: 44px;
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Menu button -->
+  <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <!-- Sidebar menu -->
+  <nav class="sidebar" id="sidebarMenu" aria-label="Section navigation">
+    <button class="close-btn" id="closeSidebar" aria-label="Close menu">&times;</button>
+    <h3>Jump to...</h3>
+    <ul>
+      <li><a href="#session1">SAMCHU</a></li>
+      <li><a href="#session2">About me</a></li>
+      <li><a href="#session3">Skill</a></li>
+      <li><a href="#session4">Experience</a></li>
+      <li><a href="#session5">Showcase</a></li>
+    </ul>
+  </nav>
+
+  <div class="session" id="session1">
+    <video
+      class="bg-video"
+      src="title-vid/title-vid.mp4"
+      autoplay
+      loop
+      muted
+      playsinline
+    ></video>
+    <div class="corner-image">
+      <img src="images/contact.png" alt="Corner Picture">
+    </div>
+    <div class="scroll-arrow" id="scrollArrow" title="Scroll down">
+      <svg width="24" height="24" viewBox="0 0 24 24">
+        <polyline points="6 9 12 15 18 9" />
+      </svg>
+    </div>
+  </div>
+
+  <div class="session" id="session2">
+    <video class="bg-video" src="title-vid/ctroom.mp4" autoplay loop muted playsinline></video>
+    <div class="content">
+      <img
+        src="images/aboutme.png"
+        alt="About Me"
+        style="display: block; margin: 0 auto; width: 100%"
+      />
+    </div>
+  </div>
+
+  <div class="session" id="session3">
+    <video class="bg-video" src="title-vid/ctcontrol.mp4" autoplay loop muted playsinline></video>
+    <div class="content">
+      <img
+        src="images/skills.png"
+        alt="Skill"
+        style="display: block; margin: 0 auto; width: 90%"
+      />
+    </div>
+  </div>
+
+  <div class="session" id="session4">
+    <video class="bg-video" src="title-vid/xrayroom.mp4" autoplay loop muted playsinline></video>
+    <div class="content">
+      <img
+        src="images/experience.png"
+        alt="Experience"
+        style="display: block; margin: 0 auto; width: 110%"
+      />
+    </div>
+  </div>
+
+  <!-- Session 5: Showcase -->
+  <div class="session" id="session5">
+    <video
+      class="bg-video"
+      src="title-vid/carmroom.mp4"
+      autoplay
+      loop
+      muted
+      playsinline
+    ></video>
+
+    <div class="video-slider">
+      <button class="arrow left-arrow" aria-label="Previous video">&#9664;</button>
+
+      <div class="video-wrapper">
+        <video
+          id="mainVideo"
+          src="images/CT01.mp4"
+          width="640"
+          height="360"
+          controls
+        ></video>
+        <p id="videoDescription" class="video-description">
+          Your description here...
+        </p>
+      </div>
+
+      <button class="arrow right-arrow" aria-label="Next video">&#9654;</button>
+    </div>
+
+    <div class="image-container">
+      <img
+        src="images/paper.png"
+        alt="Paper"
+        style="display: block; margin: 0 auto; width: 100%"
+      />
+    </div>
+  </div>
+
+  <script>
+    // Scroll down arrow click scrolls to session 2 smoothly
+    document.getElementById("scrollArrow").addEventListener("click", () => {
+      document.getElementById("session2").scrollIntoView({ behavior: "smooth" });
+    });
+
+    // Sidebar toggle controls
+    const sidebarMenu = document.getElementById("sidebarMenu");
+    const menuBtn = document.getElementById("menuBtn");
+    const closeSidebar = document.getElementById("closeSidebar");
+    menuBtn.onclick = () => {
+      sidebarMenu.classList.add("open");
+    };
+    closeSidebar.onclick = () => {
+      sidebarMenu.classList.remove("open");
+    };
+    // Close sidebar if clicked outside
+    document.addEventListener("click", (e) => {
+      if (
+        sidebarMenu.classList.contains("open") &&
+        !sidebarMenu.contains(e.target) &&
+        !menuBtn.contains(e.target)
+      ) {
+        sidebarMenu.classList.remove("open");
+      }
+    });
+    // Smooth scroll for sidebar links
+    [...sidebarMenu.querySelectorAll("a")].forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        sidebarMenu.classList.remove("open");
+        const target = document.querySelector(link.getAttribute("href"));
+        if (target) target.scrollIntoView({ behavior: "smooth" });
+      });
+    });
+
+    // Session 5 video slider functionality
+    (function () {
+      const videos = [
+        {
+          src: "images/CT01.mp4",
+          description: "CT projection planning for Christmas ambience ",
+        },
+        {
+          src: "images/CT02.mp4",
+          description: "CT projection planning for tropical ambience",
+        },
+        {
+          src: "images/CT03.mp4",
+          description: "CT projection planning for chill ambience with instructions",
+        },
+      ];
+      let currentIndex = 0;
+
+      const mainVideo = document.getElementById("mainVideo");
+      const videoDescription = document.getElementById("videoDescription");
+      const leftArrow = document.querySelector(".left-arrow");
+      const rightArrow = document.querySelector(".right-arrow");
+
+      function updateVideo(index) {
+        mainVideo.src = videos[index].src;
+        videoDescription.textContent = videos[index].description;
+        // DO NOT video playback: let user click play themselves!
+        mainVideo.load();
+      }
+
+      leftArrow.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+        updateVideo(currentIndex);
+        arrowBounce(leftArrow);
+      });
+
+      rightArrow.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % videos.length;
+        updateVideo(currentIndex);
+        arrowBounce(rightArrow);
+      });
+      // Arrow bounce function
+      function arrowBounce(btn){
+        btn.classList.remove("bounce"); // reset if exists
+        void btn.offsetWidth;  // trigger reflow for restart
+        btn.classList.add("bounce");
+      }
+      // Initialize slider with first video
+      updateVideo(currentIndex);
+    })();
+  </script>
+</body>
+</html>
