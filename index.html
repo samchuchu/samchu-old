@@ -80,6 +80,35 @@
       stroke-linecap: round;
       stroke-linejoin: round;
     }
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 12px; /* space between lines */
+      align-items: flex-start;
+    }
+
+    .contact-line {
+      display: flex;
+      align-items: center;
+      gap: 8px; /* space between icon and link */
+    }
+
+    .icon {
+      width: 22px; /* match size to your design */
+      height: 22px;
+    }
+
+    .contact-link {
+      color: #666f79;     /* Match color as in the sample image */
+      text-decoration: none;
+      font-size: 16px;    /* Adjust as needed */
+      font-family: inherit;
+    }
+
+    .contact-link:hover {
+      text-decoration: underline;
+    }
+
     @keyframes bounce {
       0%,
       100% {
@@ -315,8 +344,19 @@
       muted
       playsinline
     ></video>
-    <div class="corner-image">
-      <img src="images/contact.png" alt="Corner Picture">
+    <div class="contact-info">
+      <div class="contact-line">
+        <img src="images/phone.png" alt="Call Icon" class="icon">
+        <a href="tel:+6585150437" class="contact-link">+65 85150437</a>
+      </div>
+      <div class="contact-line">
+        <img src="images/email.png" alt="Email Icon" class="icon">
+        <a href="mailto:hiamrabbit@gmail.com" class="contact-link">hiamrabbit@gmail.com</a>
+      </div>
+      <div class="contact-line">
+        <img src="images/home.png" alt="Home Icon" class="icon">
+        <span class="contact-link">Farrer Park Area</span>
+      </div>
     </div>
     <div class="scroll-arrow" id="scrollArrow" title="Scroll down">
       <svg width="24" height="24" viewBox="0 0 24 24">
@@ -486,6 +526,7 @@
   </script>
 </body>
 </html>
+
 
 
 
