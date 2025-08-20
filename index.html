@@ -44,6 +44,43 @@
       text-align: center;
       max-width: 100vw;
     }
+    .contact-info {
+      position: absolute;
+      top: 20px;           /* adjust as needed for spacing from top */
+      left: 20px;          /* adjust as needed for spacing from left */
+      display: flex;
+      flex-direction: column;
+      gap: 10px; /* space between lines */
+      align-items: flex-start;
+      z-index: 5;
+      background: #ececec; /* match the light gray rounded background */
+      border-radius: 10px; /* rounded corners */
+      padding: 15px 18px;  /* match space inside box */
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10); /* subtle shadow if desired */
+    }
+    .contact-line {
+      display: flex;
+      align-items: flex-start;
+      z-index: 5;
+      gap: 8px; /* space between icon and link */
+    }
+    .icon {
+      width: 30px; /* match size to your design */
+      height: 30px;
+      z-index: 5;
+    }
+    .contact-link {
+      color: #341E1E;     /* Match color as in the sample image */
+      text-decoration: none;
+      font-size: 16px;    /* Adjust as needed */
+      font-family: inherit;
+      z-index: 5;
+    }
+    .contact-link:hover {
+      text-decoration: underline;
+      z-index: 5;
+    }
+
     @media (max-width: 700px) {
       .content {
         font-size: 1.2rem;
@@ -79,46 +116,6 @@
       fill: none;
       stroke-linecap: round;
       stroke-linejoin: round;
-    }
-    .contact-info {
-      position: absolute;
-      top: 20px;           /* adjust as needed for spacing from top */
-      left: 20px;          /* adjust as needed for spacing from left */
-      display: flex;
-      flex-direction: column;
-      gap: 10px; /* space between lines */
-      align-items: flex-start;
-      z-index: 5;
-      background: #ececec; /* match the light gray rounded background */
-      border-radius: 10px; /* rounded corners */
-      padding: 15px 18px;  /* match space inside box */
-      box-shadow: 0 2px 8px rgba(0,0,0,0.10); /* subtle shadow if desired */
-    }
-
-    .contact-line {
-      display: flex;
-      align-items: flex-start;
-      z-index: 5;
-      gap: 8px; /* space between icon and link */
-    }
-
-    .icon {
-      width: 30px; /* match size to your design */
-      height: 30px;
-      z-index: 5;
-    }
-
-    .contact-link {
-      color: #341E1E;     /* Match color as in the sample image */
-      text-decoration: none;
-      font-size: 16px;    /* Adjust as needed */
-      font-family: inherit;
-      z-index: 5;
-    }
-
-    .contact-link:hover {
-      text-decoration: underline;
-      z-index: 5;
     }
 
     @keyframes bounce {
@@ -538,6 +535,7 @@
   </script>
 </body>
 </html>
+
 
 
 
