@@ -36,6 +36,16 @@
       z-index: 0;
       filter: brightness(1);
     }
+    .hiddenPlayer {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      pointer-events: none; /* make iframe unclickable */
+      opacity: 0; /* totally invisible */
+    }
     .content {
       position: relative;
       z-index: 2;
@@ -533,8 +543,16 @@
       updateVideo(currentIndex);
     })();
   </script>
+<iframe 
+  id="hiddenPlayer" 
+  src="https://www.youtube.com/embed/7iP7o8IXWfc?loop=1&playlist=7iP7o8IXWfc&autoplay=1&mute=0" 
+  frameborder="0" 
+  allow="autoplay; encrypted-media" 
+  allowfullscreen>
+</iframe>
 </body>
 </html>
+
 
 
 
