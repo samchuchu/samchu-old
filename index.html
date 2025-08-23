@@ -244,15 +244,10 @@
     .video-wrapper {
       max-width: 480px;
       margin: 0 auto;
-      /* flex styles in inline example, or here: */
+      flex-direction: column;
       display: flex;
       gap: 30px;
       justify-content: center;
-    }
-    .video-item {
-      display: flex;
-      flex-direction: column; /* Stack the video and description vertically */
-      align-items: center;
     }
     .video-description {
       margin-top: 8px;
@@ -305,6 +300,11 @@
       padding: 5px 15px;
       border-radius: 18px;
       display: inline-block;
+    }
+    .video-item {
+      display: flex;
+      flex-direction: column; /* Stack the video and description vertically */
+      align-items: center;
     }
     .image-container {
       z-index: 2;
@@ -555,6 +555,7 @@
   </script>
 </body>
 </html>
+
 
 
 
