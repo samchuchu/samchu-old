@@ -242,10 +242,17 @@
       min-height: 300px; /* prevent shrink on mobile */
     }
     .video-wrapper {
-      text-align: center;
       max-width: 480px;
-      gap: 30px; /* space between videos */
-      flex-shrink: 0;
+      margin: 0 auto;
+      /* flex styles in inline example, or here: */
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+    }
+    .video-item {
+      display: flex;
+      flex-direction: column; /* Stack the video and description vertically */
+      align-items: center;
     }
     .video-description {
       margin-top: 8px;
@@ -438,7 +445,10 @@
         <p id="videoDescription" class="video-description">
           Your description here...
         </p>
+      </div>
+      <div class="video-item">
         <video src="title-vid/tw2sg.mp4" width="231" height="270" controls></video>
+        <!-- No description here -->
       </div>
 
       <button class="arrow right-arrow" aria-label="Next video">&#9654;</button>
@@ -545,6 +555,7 @@
   </script>
 </body>
 </html>
+
 
 
 
