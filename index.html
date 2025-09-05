@@ -37,14 +37,14 @@
       filter: brightness(1);
     }
     #copyrightFooter {
-      margin-top: 15px;
-      font-size: 12px;  /* very small but readable */
-      line-height: 1.2;
-      color: rgba(49, 44, 42, 0.582);
+      margin-top: 10px;
+      font-size: 10px;  /* very small but readable */
+      line-height: 1;
+      color: rgba(73, 71, 70, 0.902);
       background-color: #ffffffbd;
       z-index: 5;
       width: 75%;
-      border-radius: 18px;
+      border-radius: 10px;
       text-align: center;
     }
     .content {
@@ -248,14 +248,14 @@
       flex-direction: column; /* Stack the video and description vertically */
       align-items: center;
       gap: 10px;
-      background-color: rgba(255, 105, 105, 0.422); /* White with 50% opacity */
+      background-color: rgba(249, 168, 130, 0.8); /* White with 50% opacity */
       padding: 10px; /* Frame thickness */
       border-radius: 8px; /* Optional rounded corners */
     }
     .video-description {
       font-size: 15px;
       font-family: 'Segoe UI', 'Arial', sans-serif;
-      color: #c83636;
+      color: #292929;
       background: rgba(255, 254, 254, 0.651);
       backdrop-filter: blur(7px);
       -webkit-backdrop-filter: blur(7px);
@@ -454,12 +454,6 @@
       </div>
       <button class="arrow right-arrow" aria-label="Next video">&#9654;</button>
       <div class="video-wrapper">
-        <video src="images/tw2sg.mp4" width="auto" height="270" controls></video>
-        <p id="videoDescription" class="video-description">
-          STORY BOOK
-        </p>
-      </div> 
-      <div class="video-wrapper">
         <video src="images/radbit-ui.mp4" width="auto" height="270" controls></video>
         <p id="videoDescription" class="video-description">
           RADbit APP UI
@@ -470,7 +464,13 @@
         <p id="videoDescription" class="video-description">
           RADbit APP UI 2
         </p>
-      </div>  
+      </div>
+      <div class="video-wrapper">
+        <video src="images/tw2sg.mp4" width="auto" height="270" controls></video>
+        <p id="videoDescription" class="video-description">
+          My Journey
+        </p>
+      </div> 
     </div>
     <div id="copyrightFooter">
   Copyright Notice © 2025 Chu Wei-Cheng. All rights reserved. All original text, design, and creative elements on this site are the intellectual property of the author. Certain materials have been created with the assistance of artificial intelligence tools; while such AI-generated elements may not be independently eligible for copyright protection, the selection, arrangement, and any human modifications are protected under copyright law.
@@ -575,7 +575,6 @@
   </script>
 </body>
 </html>
-
 
 
 
