@@ -62,11 +62,10 @@
       left: 160px;          /* adjust as needed for spacing from left */
       display: flex;
       flex-direction: column;
-      gap: 10px
+      gap: 8px
       align-items: flex-start;
       z-index: 5;
-      background: rgba(255, 255, 255, 0.7) /* match the light gray rounded background */
-      border-radius: 15px; /* rounded corners */
+      border-radius: 35px; /* rounded corners */
       padding: 15px 18px;  /* match space inside box */
     }
     .contact-line {
@@ -81,7 +80,7 @@
       z-index: 5;
     }
     .contact-link {
-      color: rgba(27, 18, 15, 0.96);     /* Match color as in the sample image */
+      color: rgba(43, 62, 95, 0.96);     /* Match color as in the sample image */
       text-decoration: none;
       font-size: 16px;    /* Adjust as needed */
       font-family: inherit;
@@ -116,14 +115,14 @@
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
       transition: opacity 0.3s;
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.9);
     }
     .scroll-arrow:hover {
       opacity: 0.9;
     }
     .scroll-arrow svg {
-      stroke: rgba(250, 158, 138, 0.9);
-      stroke-width: 3;
+      stroke: rgba(250, 158, 138, 1);
+      stroke-width: 5;
       fill: none;
       stroke-linecap: round;
       stroke-linejoin: round;
@@ -366,6 +365,13 @@
       muted
       playsinline
     ></video>
+    <div class="content">
+      <img
+        src="images/name.png"
+        alt="About Me"
+        style="display: block; margin: 0 auto; width: 90%"
+      />
+    </div>
     <div class="contact-info">
       <div class="contact-line">
         <img src="images/phone.png" alt="Call Icon" class="icon">
