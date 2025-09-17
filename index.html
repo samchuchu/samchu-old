@@ -27,14 +27,16 @@
       color: #fff;
     }
     .bg-video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 99%;
-      height: 99%;
-      object-fit: cover;
-      z-index: 0;
-      filter: brightness(1);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;  /* Changed from 99% */
+        height: 100% !important; /* Changed from 99% */
+        object-fit: cover;
+        z-index: 0;
+        filter: brightness(1);
+        min-width: 100%;
+        min-height: 100%;
     }
     #copyrightFooter {
       margin-top: 10px;
@@ -58,8 +60,8 @@
     /* contact info */
     .contact-info {
       position: absolute;
-      top: 140px;           /* adjust as needed for spacing from top */
-      left: 170px;          /* adjust as needed for spacing from left */
+      top: 120px;           /* adjust as needed for spacing from top */
+      left: 160px;          /* adjust as needed for spacing from left */
       display: flex;
       flex-direction: column;
       gap: 8px
@@ -126,6 +128,21 @@
       fill: none;
       stroke-linecap: round;
       stroke-linejoin: round;
+    }
+    /* Mobile specific video scaling */
+    @media screen and (max-width: 768px) {
+        .bg-video {
+            width: 100vw !important;
+            height: 100vh !important;
+            object-fit: cover;
+            position: fixed; /* Changed from absolute for better mobile behavior */
+        }
+    
+        .session {
+            position: relative;
+            min-height: 100vh;
+            width: 100vw;
+        }
     }
 
     @keyframes bounce {
@@ -247,7 +264,7 @@
       flex-direction: column; /* Stack the video and description vertically */
       align-items: center;
       gap: 10px;
-      background-color: rgba(255, 233, 233, 0.8); /* White with 50% opacity */
+      background-color: rgba(249, 168, 130, 0.8); /* White with 50% opacity */
       padding: 10px; /* Frame thickness */
       border-radius: 8px; /* Optional rounded corners */
     }
@@ -471,6 +488,12 @@
           RADbit APP UI 2
         </p>
       </div>
+      <div class="video-wrapper">
+        <video src="images/tw2sg.mp4" width="auto" height="270" controls></video>
+        <p id="videoDescription" class="video-description">
+          My Journey
+        </p>
+      </div> 
     </div>
     <div id="copyrightFooter">
   Copyright Notice © 2025 Chu Wei-Cheng. All rights reserved. All original text, design, and creative elements on this site are the intellectual property of the author. Certain materials have been created with the assistance of artificial intelligence tools; while such AI-generated elements may not be independently eligible for copyright protection, the selection, arrangement, and any human modifications are protected under copyright law.
@@ -575,11 +598,6 @@
   </script>
 </body>
 </html>
-
-
-
-
-
 
 
 
