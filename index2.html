@@ -4,26 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Senior Radiographer Sam Chu</title>
-  <!-- Google Fonts: Playfair Display (headings) + Inter (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Premium fonts: Playfair Display for headings, Inter for body */
-    h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
-    body, p, a, li, span, button { font-family: 'Inter', sans-serif; }
-    
-    /* Smooth fade-in animations */
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes slideInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
-    
-    .session { animation: fadeInUp 1s ease-out forwards; }
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+    body, p, a, li, span, button { font-family: 'Inter', sans-serif; }
+
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+
     body,
     html {
       height: 100%;
@@ -39,8 +35,8 @@
       align-items: center;
       justify-content: center;
       color: #fff;
+      animation: fadeInUp 1s ease-out forwards;
     }
-    /* Gradient overlay for text contrast */
     .session::after {
       content: '';
       position: absolute;
@@ -48,12 +44,9 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.1) 100%);
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, transparent 100%);
       pointer-events: none;
       z-index: 1;
-    }
-    .session:first-child::after {
-      background: linear-gradient(160deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.1) 100%);
     }
     .bg-video {
       position: absolute;
@@ -84,24 +77,21 @@
       text-align: center;
       max-width: 100vw;
     }
-    /* contact info - Glassmorphism */
+    /* contact info */
     .contact-info {
       position: absolute;
-      top: 20px;
-      left: 20px;
+      top: 20px;           /* adjust as needed for spacing from top */
+      left: 20px;          /* adjust as needed for spacing from left */
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 10px
       align-items: flex-start;
       z-index: 5;
-      /* Glassmorphism effect */
       backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
       background: rgba(255, 255, 255, 0.15);
       border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 15px;
-      padding: 15px 18px;
-      animation: slideInLeft 0.8s ease-out forwards;
+      border-radius: 15px; /* rounded corners */
+      padding: 15px 18px;  /* match space inside box */
     }
     .contact-line {
       display: flex;
@@ -601,43 +591,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
