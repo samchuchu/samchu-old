@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=0.5, minimum-scale=0.3, maximum-scale=2.0, user-scalable=yes">
   <title>Senior Radiographer Sam Chu</title>
+  <!-- Google Fonts: Playfair Display (headings) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -15,6 +19,50 @@
       height: 100%;
       width: 100%;
     }
+    /* Premium fonts: Playfair Display for headings, Inter for body */
+    h1, h2, h3, h4, h5, h6, .heading {
+      font-family: 'Playfair Display', serif;
+    }
+    body, p, a, li, span, button, .body-text {
+      font-family: 'Inter', sans-serif;
+    }
+    
+    /* Smooth fade-in animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
     .session {
       position: relative;
       min-height: 100vh;
@@ -26,21 +74,58 @@
       justify-content: center;
       color: #fff;
     }
+    /* Section animations */
+    .session {
+      animation: fadeInUp 1s ease-out forwards;
+    }
+    #session1 { animation-delay: 0s; }
+    #session2 { animation-delay: 0.1s; }
+    #session3 { animation-delay: 0.1s; }
+    #session4 { animation-delay: 0.1s; }
+    #session5 { animation-delay: 0.1s; }
+    
     .bg-video {
         position: absolute;
         top: 0;
         left: 0;
-        width: 100% !important;  /* Changed from 99% */
-        height: 100% !important; /* Changed from 99% */
+        width: 100% !important;
+        height: 100% !important;
         object-fit: cover;
         z-index: 0;
         filter: brightness(1);
         min-width: 100%;
         min-height: 100%;
     }
+    /* Gradient overlay on video for better text contrast */
+    .bg-video::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.4) 0%,
+        rgba(0, 0, 0, 0.2) 50%,
+        rgba(0, 0, 0, 0.5) 100%
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+    /* Session 1 hero video gets a stronger gradient for text contrast */
+    #session1 .bg-video::after {
+      background: linear-gradient(
+        160deg,
+        rgba(20, 20, 30, 0.5) 0%,
+        rgba(40, 40, 60, 0.25) 40%,
+        rgba(0, 0, 0, 0.6) 100%
+      );
+    }
+    
     #copyrightFooter {
       margin-top: 10px;
-      font-size: 10px;  /* very small but readable */
+      font-size: 10px;
       line-height: 1;
       color: rgba(73, 71, 70, 0.902);
       background-color: #ffffffbd;
@@ -57,40 +142,58 @@
       text-align: center;
       max-width: 100vw;
     }
-    /* contact info */
+    /* Glassmorphism effect on contact info card */
     .contact-info {
       position: absolute;
-      top: 120px;           /* adjust as needed for spacing from top */
-      left: 160px;          /* adjust as needed for spacing from left */
+      top: 120px;
+      left: 160px;
       display: flex;
       flex-direction: column;
-      gap: 8px
+      gap: 8px;
       align-items: flex-start;
       z-index: 5;
-      border-radius: 35px; /* rounded corners */
-      padding: 15px 18px;  /* match space inside box */
+      border-radius: 35px;
+      padding: 15px 18px;
+      /* Premium glassmorphism */
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      animation: slideInLeft 0.8s ease-out 0.3s both;
     }
     .contact-line {
       display: flex;
       align-items: flex-start;
       z-index: 6;
-      gap: 8px; /* space between icon and link */
+      gap: 8px;
     }
     .icon {
-      width: 22px; /* match size to your design */
+      width: 22px;
       height: 22px;
       z-index: 5;
+      transition: transform 0.3s ease;
+    }
+    .contact-line:hover .icon {
+      transform: scale(1.15);
     }
     .contact-link {
-      color: rgba( 37, 108, 126, 1);     /* Match color as in the sample image */
+      color: rgba(255, 255, 255, 0.95);
       text-decoration: none;
-      font-size: 16px;    /* Adjust as needed */
-      font-family: inherit;
+      font-size: 16px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
       z-index: 2000;
+      transition: all 0.3s ease;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     }
     .contact-link:hover {
-      text-decoration: underline;
-      z-index: 5;
+      text-decoration: none;
+      color: #fff;
+      transform: translateX(4px);
+      text-shadow: 0 2px 8px rgba(250, 158, 138, 0.5);
     }
 
     @media (max-width: 700px) {
@@ -98,7 +201,7 @@
         font-size: 1.2rem;
       }
     }
-    /* Glass-like transparent scroll arrow */
+    /* Enhanced glass-like transparent scroll arrow */
     .scroll-arrow {
       position: absolute;
       left: 50%;
@@ -108,19 +211,23 @@
       width: 40px;
       height: 40px;
       cursor: pointer;
-      opacity: 0.55;
+      opacity: 0;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      animation: bounce 2s infinite;
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      transition: opacity 0.3s;
-      background: rgba(255, 255, 255, 0.9);
+      animation: bounce 2s infinite, fadeIn 0.6s ease-out 1s forwards;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
     .scroll-arrow:hover {
-      opacity: 0.9;
+      opacity: 1 !important;
+      background: rgba(255, 255, 255, 0.35);
+      transform: translateX(-50%) scale(1.1);
+      box-shadow: 0 4px 20px rgba(250, 158, 138, 0.4);
     }
     .scroll-arrow svg {
       stroke: rgba(250, 158, 138, 1);
@@ -128,6 +235,10 @@
       fill: none;
       stroke-linecap: round;
       stroke-linejoin: round;
+      transition: stroke 0.3s ease;
+    }
+    .scroll-arrow:hover svg {
+      stroke: #fff;
     }
     /* Mobile specific video scaling */
     @media screen and (max-width: 768px) {
@@ -135,7 +246,7 @@
             width: 100vw !important;
             height: 100vh !important;
             object-fit: cover;
-            position: fixed; /* Changed from absolute for better mobile behavior */
+            position: fixed;
         }
     
         .session {
@@ -154,7 +265,7 @@
         transform: translateX(-50%) translateY(15px);
       }
     }
-    /* Menu button */
+    /* Enhanced Menu button with hover effects */
     .menu-btn {
       gap: 2px;
       position: fixed;
@@ -172,33 +283,40 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      transition: background 0.3s;
+      transition: all 0.3s ease;
     }
     .menu-btn:hover {
-      background: rgba(250, 158, 138, 0.9);
+      background: rgba(250, 158, 138, 0.95);
+      transform: scale(1.1);
+      box-shadow: 0 4px 15px rgba(250, 158, 138, 0.5);
     }
     .menu-btn span {
       display: block;
       width: 10px;
       height: 4px;
       background: white;
-      transition: all 0.3s;
+      transition: all 0.3s ease;
+      border-radius: 2px;
     }
-    /* Sidebar menu */
+    .menu-btn:hover span {
+      width: 12px;
+    }
+    /* Premium Sidebar menu */
     .sidebar {
       position: fixed;
       top: 0;
       right: -260px;
       width: 170px;
       height: 100%;
-      background: rgba(24, 24, 28, 0.95);
+      background: linear-gradient(180deg, rgba(24, 24, 28, 0.98) 0%, rgba(35, 35, 42, 0.95) 100%);
       color: white;
-      box-shadow: -4px 0 20px rgba(0, 0, 0, 0.25);
+      box-shadow: -4px 0 30px rgba(0, 0, 0, 0.4);
       padding-top: 60px;
-      transition: right 0.3s ease-in-out;
+      transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 200;
       display: flex;
       flex-direction: column;
+      backdrop-filter: blur(10px);
     }
     .sidebar.open {
       right: 0;
@@ -209,6 +327,7 @@
       text-align: center;
       font-size: 1.2rem;
       letter-spacing: 1px;
+      font-family: 'Playfair Display', serif;
     }
     .sidebar ul {
       list-style: none;
@@ -222,10 +341,27 @@
     .sidebar ul li a {
       color: white;
       text-decoration: none;
-      transition: color 0.2s;
+      transition: all 0.3s ease;
+      display: inline-block;
+      padding: 4px 0;
+      position: relative;
+    }
+    .sidebar ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #e0b203, #f0c040);
+      transition: width 0.3s ease;
     }
     .sidebar ul li a:hover {
       color: #e0b203;
+      transform: translateX(5px);
+    }
+    .sidebar ul li a:hover::after {
+      width: 100%;
     }
     .sidebar .close-btn {
       position: absolute;
@@ -237,15 +373,27 @@
       color: white;
       cursor: pointer;
       z-index: 210;
+      transition: all 0.3s ease;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sidebar .close-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: rotate(90deg);
     }
     .corner-image {
       position: absolute;
-      top: 30px;    /* distance from top */
-      left: 30px;   /* distance from left */
-      z-index: 3;   /* above video bg */
+      top: 30px;
+      left: 30px;
+      z-index: 3;
+      animation: fadeIn 0.8s ease-out 0.5s both;
     }
     .corner-image img {
-      width: 80%;  /* adjust size as needed */
+      width: 80%;
       height: auto;
     }
     /* Session 5 specific styles */
@@ -257,31 +405,30 @@
       margin-top: 40px;
       z-index: 2;
       position: relative;
-      min-height: 50px; /* prevent shrink on mobile */
+      min-height: 50px;
     }
     .video-wrapper {
       display: flex;
-      flex-direction: column; /* Stack the video and description vertically */
+      flex-direction: column;
       align-items: center;
       gap: 10px;
-      background-color: rgba(255, 233, 233, 0.95); /* White with 50% opacity */
-      padding: 10px; /* Frame thickness */
-      border-radius: 8px; /* Optional rounded corners */
+      background-color: rgba(255, 233, 233, 0.95);
+      padding: 10px;
+      border-radius: 8px;
     }
     .video-description {
       font-size: 15px;
-      font-family: 'Segoe UI', 'Arial', sans-serif;
+      font-family: 'Inter', sans-serif;
       color: #444343;
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(7px);
       -webkit-backdrop-filter: blur(7px);
-      padding: 5px 5px;
-      padding-left: 10px;
-      padding-right: 10px;
+      padding: 5px 10px;
       border-radius: 18px;
       display: inline-block;
+      transition: all 0.3s ease;
     }
-    /* Arrow button styling */
+    /* Enhanced Arrow button styling with hover effects */
     .arrow {
       display: flex;
       align-items: center;
@@ -296,13 +443,20 @@
       border-radius: 50%;
       color: #fff;
       opacity: 0.9;
-      transition: opacity 0.3s, transform 0.15s;
+      transition: all 0.3s ease;
       cursor: pointer;
       user-select: none;
       position: relative;
     }
     .arrow:hover {
-      opacity: 0.93;
+      opacity: 1;
+      background: rgba(247, 100, 74, 1);
+      transform: scale(1.15);
+      box-shadow: 0 4px 20px rgba(247, 100, 74, 0.5);
+      border-color: rgba(250,158,138,0.6);
+    }
+    .arrow:active {
+      transform: scale(0.95);
     }
     .arrow.bounce {
       animation: bounceArrow 0.6s;
@@ -316,18 +470,19 @@
     }
     .video-item {
       display: flex;
-      flex-direction: column; /* Stack the video and description vertically */
+      flex-direction: column;
       align-items: center;
-      background-color: rgba(236, 192, 192, 0.8); /* White with 50% opacity */
-      padding: 5px; /* Adjust padding for frame thickness */
-      border-radius: 8px; /* Optional: rounded corners for nicer frame */
+      background-color: rgba(236, 192, 192, 0.8);
+      padding: 5px;
+      border-radius: 8px;
     }
     .image-container {
       z-index: 2;
-      margin-top: 20px; /* Space between video and image */
+      margin-top: 20px;
       width: 100%;
       display: flex;
       justify-content: center;
+      animation: fadeInUp 0.8s ease-out 0.3s both;
     }
     .image-container img {
       display: block;
@@ -349,6 +504,12 @@
         width: 44px;
         height: 44px;
         font-size: 1.4rem;
+      }
+      /* Adjust contact card for mobile */
+      .contact-info {
+        left: 20px;
+        top: 100px;
+        padding: 12px 15px;
       }
     }
   </style>
@@ -374,6 +535,7 @@
   </nav>
 
   <div class="session" id="session1">
+    <!-- Keeping Final2.mp4 as requested -->
     <video class="bg-video" src="title-vid/Final2.mp4" autoplay loop muted playsinline></video>
     <div class="content">
       <img
@@ -382,6 +544,7 @@
         style="display: block; margin: 0 auto; width: 90%"
       />
     </div>
+    <!-- Glassmorphism contact info card -->
     <div class="contact-info">
       <div class="contact-line">
         <img src="images/phone.png" alt="Call Icon" class="icon">
@@ -436,7 +599,7 @@
     </div>
   </div>
 
-  <!-- Session 5: Showcase -->
+  <!-- Session 5: Showcase - kept exactly as is -->
   <div class="session" id="session5">
     <video
       class="bg-video"
@@ -482,7 +645,6 @@
 
     if (isMobile && !isLandscape) {
       alert("For a better experience, please view this page in landscape mode or use a desktop/tablet.");
-      // Or show a custom HTML notification instead of alert
     }
     };
     // Scroll down arrow click scrolls to session 2 smoothly
@@ -554,7 +716,6 @@
       function updateVideo(index) {
         mainVideo.src = videos[index].src;
         videoDescription.textContent = videos[index].description;
-        // DO NOT video playback: let user click play themselves!
         mainVideo.load();
       }
 
@@ -571,8 +732,8 @@
       });
       // Arrow bounce function
       function arrowBounce(btn){
-        btn.classList.remove("bounce"); // reset if exists
-        void btn.offsetWidth;  // trigger reflow for restart
+        btn.classList.remove("bounce");
+        void btn.offsetWidth;
         btn.classList.add("bounce");
       }
       // Initialize slider with first video
@@ -581,49 +742,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
