@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sam Chu | Senior CT Radiographer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <!-- Meta / OG -->
+  <meta name="description" content="Sam Chu — Senior CT Radiographer with 11+ years of clinical excellence across world-class hospitals and healthcare startups.">
+  <meta property="og:title" content="Sam Chu | Senior CT Radiographer">
+  <meta property="og:description" content="11+ years of clinical excellence. From setup to scan — building imaging services from the ground up.">
+  <meta property="og:image" content="https://samchuchu.github.io/samchu/images/hero-portrait.jpg">
+  <meta property="og:url" content="https://samchuchu.github.io/samchu/landing.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- GoatCounter -->
+  <script data-goatcounter="https://samchuchu.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+
+  <style>
+    :root {
+      --bg: oklch(0.985 0.01 60);
+      --bg-warm: oklch(0.97 0.015 55);
+      --bg-deep: oklch(0.2 0.02 50);
+      --text: oklch(0.18 0.01 50);
+      --text-soft: oklch(0.4 0.015 50);
+      --text-muted: oklch(0.55 0.01 50);
+      --accent: oklch(0.5 0.14 45);
+      --accent-light: oklch(0.7 0.1 45);
+      --accent-pale: oklch(0.9 0.04 45);
+      --glass: oklch(1 0 0 / 0.6);
+      --border: oklch(0.88 0.01 50);
+      --font: 'Outfit', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* === STICKY NAV === */
+    .sticky-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: oklch(0.98 0.01 60 / 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.75rem 2rem;
+      transform: translateY(-100%);
+      transition: transform 0.35s ease;
+    }
+    .sticky-nav.visible {
+      transform: translateY(0);
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-soft);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+    .nav-cta {
+      background: var(--text);
+      color: var(--bg) !important;
+      padding: 0.5rem 1rem;
+      border-radius: 100px;
+      font-weight: 600;
+    }
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+    }
+
+    /* === HERO === */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 2rem;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 40%, oklch(0.85 0.08 55 / 0.35) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 60%, oklch(0.82 0.06 220 / 0.25) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 40% at 50% 100%, oklch(0.88 0.05 160 / 0.2) 0%, transparent 50%),
+        linear-gradient(160deg, var(--bg) 0%, oklch(0.98 0.015 55) 50%, var(--bg) 100%);
+      z-index: 0;
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.5;
+      animation: drift 20s ease-in-out infinite;
+    }
+    .orb-1 { width: 500px; height: 500px; background: oklch(0.75 0.1 45); top: -10%; left: -10%; animation-delay: 0s; }
+    .orb-2 { width: 400px; height: 400px; background: oklch(0.78 0.08 220); bottom: -5%; right: -5%; animation-delay: -7s; }
+    .orb-3 { width: 300px; height: 300px; background: oklch(0.85 0.06 160); top: 40%; left: 60%; animation-delay: -14s; opacity: 0.35; }
+
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(40px, -30px) scale(1.08); }
+      66% { transform: translate(-20px, 20px) scale(0.95); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-left {
+      animation: fadeUp 1s ease-out 0.2s both;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .hero-name {
+      font-size: clamp(3.5rem, 7vw, 6rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.75rem;
+    }
+    .hero-name span {
+      background: linear-gradient(135deg, var(--accent), oklch(0.55 0.12 220));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-role {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text-soft);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-bio {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+      font-family: var(--font);
+    }
+    .btn-primary {
+      background: var(--text);
+      color: var(--bg);
+      box-shadow: 0 4px 16px oklch(0 0 0 / 0.12);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px oklch(0 0 0 / 0.18);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      animation: fadeUp 1s ease-out 1.2s both;
+      z-index: 2;
+    }
+    .scroll-indicator svg {
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+
+    /* Portrait frame */
+    .hero-right {
+      display: flex;
+      justify-content: center;
+      animation: fadeUp 1s ease-out 0.4s both;
+    }
+
+    .portrait-frame {
+      position: relative;
+      width: 380px;
+      height: 460px;
+    }
+
+    .portrait-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 24px;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 20px 60px oklch(0 0 0 / 0.15);
+      -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 50%, transparent 100%);
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 50%, transparent 100%);
+    }
+
+    .portrait-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      background: radial-gradient(ellipse 80% 70% at 50% 50%, transparent 50%, var(--bg) 100%);
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .portrait-deco {
+      position: absolute;
+      border-radius: 24px;
+      z-index: 1;
+    }
+    .deco-1 {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, oklch(0.7 0.08 45 / 0.3), oklch(0.75 0.06 220 / 0.25));
+      top: 16px;
+      left: 16px;
+    }
+
+    /* Bubbles */
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 3;
+    }
+    .bubble-1 { width: 20px; height: 20px; background: var(--accent); opacity: 0.4; top: -10px; left: 20%; animation: bubbleFloat 5s ease-in-out infinite; }
+    .bubble-2 { width: 12px; height: 12px; background: var(--accent-light); opacity: 0.5; top: 30%; right: -15px; animation: bubbleFloat 7s ease-in-out infinite 1s; }
+    .bubble-3 { width: 18px; height: 18px; background: var(--accent-pale); opacity: 0.35; bottom: 15%; left: -10px; animation: bubbleFloat 6s ease-in-out infinite 2s; }
+    .bubble-4 { width: 10px; height: 10px; background: var(--accent); opacity: 0.6; top: 60%; right: -8px; animation: bubbleFloat 4s ease-in-out infinite 0.5s; }
+    .bubble-5 { width: 24px; height: 24px; background: transparent; border: 2px solid var(--accent-light); opacity: 0.3; top: 10%; left: -15px; animation: bubbleFloat 8s ease-in-out infinite 1.5s; }
+    .bubble-6 { width: 14px; height: 14px; background: var(--accent); opacity: 0.25; bottom: 30%; right: -12px; animation: bubbleFloat 5.5s ease-in-out infinite 3s; }
+    .bubble-7 { width: 16px; height: 16px; background: var(--accent-pale); opacity: 0.45; top: 45%; left: -18px; animation: bubbleFloat 6.5s ease-in-out infinite 2.5s; }
+
+    @keyframes bubbleFloat {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-15px) scale(1.1); }
+    }
+
+    /* === STATS BAR === */
+    .stats-bar {
+      background: var(--text);
+      color: oklch(0.95 0 0);
+      padding: 2.5rem 2rem;
+    }
+    .stats-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+    .stat-item .stat-num {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, oklch(0.85 0.08 45), oklch(0.82 0.06 220));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+    .stat-item .stat-label {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-top: 0.5rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* === SECTIONS === */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      margin-bottom: 3rem;
+    }
+    .section-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    /* === ABOUT TEASER === */
+    .about-section {
+      position: relative;
+      overflow: hidden;
+      padding: 8rem 2rem;
+    }
+    .about-bg {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('images/ct-machine.jpg') center center / cover no-repeat;
+      opacity: 0.12;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .about-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .about-backdrop {
+      background: oklch(0.98 0.015 50 / 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3rem;
+    }
+    .about-text p {
+      font-size: 1.05rem;
+      color: var(--text-soft);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+    .about-text p em {
+      color: var(--accent);
+      font-style: normal;
+      font-weight: 600;
+    }
+    .accent-text {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .about-text p strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .portrait-frame { background: var(--bg-warm); }
+    .about-visual { background: oklch(0.2 0.02 50 / 0.4); }
+    .showcase-item { background: oklch(0.15 0 0); }
+
+    /* === SKILLS SHOWCASE === */
+    .skills-section {
+      background: var(--bg-warm);
+      position: relative;
+      overflow: hidden;
+    }
+    .skills-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, oklch(0.8 0.06 45 / 0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .skill-block {
+      background: oklch(1 0 0 / 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+    .skill-block:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-light);
+      box-shadow: 0 12px 32px oklch(0 0 0 / 0.08);
+    }
+    .skill-block h4 {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .skill-block ul {
+      list-style: none;
+    }
+    .skill-block li {
+      font-size: 0.95rem;
+      color: var(--text-soft);
+      padding: 0.35rem 0;
+      border-bottom: 1px solid oklch(0.9 0.01 50 / 0.5);
+    }
+    .skill-block li:last-child { border-bottom: none; }
+
+    /* === EXPERIENCE PREVIEW === */
+    .exp-preview {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .exp-card {
+      background: oklch(1 0 0 / 0.8);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .exp-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), oklch(0.55 0.1 220));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .exp-card:hover::before {
+      transform: scaleX(1);
+    }
+    .exp-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px oklch(0 0 0 / 0.1);
+    }
+    .exp-card .exp-date {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .exp-card .exp-role {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .exp-card .exp-org {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .exp-card .exp-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      background: oklch(0.9 0.08 55 / 0.5);
+      color: oklch(0.4 0.1 45);
+    }
+
+    /* === VISUAL SHOWCASE === */
+    .showcase-section {
+      background: var(--text);
+      color: oklch(0.95 0 0);
+      position: relative;
+      overflow: hidden;
+    }
+    .showcase-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 30% 70%, oklch(0.35 0.08 45 / 0.4) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 80% 20%, oklch(0.3 0.06 220 / 0.3) 0%, transparent 50%);
+    }
+    .showcase-section .section-tag { color: oklch(0.85 0.08 45); }
+    .showcase-section .section-title { color: oklch(1 0 0); }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+    .showcase-item {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 16/10;
+    }
+    .showcase-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .showcase-item:hover img {
+      transform: scale(1.05);
+    }
+    .showcase-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, oklch(0.05 0 0 / 0.85) 0%, oklch(0.05 0 0 / 0.3) 40%, transparent 70%);
+    }
+    .showcase-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      z-index: 2;
+      background: oklch(0.05 0 0 / 0.3);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .showcase-caption h4 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 8px oklch(0 0 0 / 0.5);
+    }
+    .showcase-caption p {
+      font-size: 1rem;
+      opacity: 0.9;
+      text-shadow: 0 1px 4px oklch(0 0 0 / 0.5);
+    }
+    .showcase-caption .showcase-tagline {
+      font-size: 1.05rem;
+      opacity: 0.9;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+    .showcase-details {
+      background: oklch(0.1 0 0 / 0.5);
+      backdrop-filter: blur(8px);
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-top: 0.75rem;
+    }
+    .showcase-details p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+      opacity: 0.9;
+    }
+    .showcase-details ul {
+      list-style: none;
+      margin-bottom: 0.75rem;
+    }
+    .showcase-details li {
+      font-size: 0.85rem;
+      padding: 0.35rem 0;
+      padding-left: 1.25rem;
+      position: relative;
+      opacity: 0.85;
+    }
+    .showcase-details li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+    .showcase-meta {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+    .meta-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.3rem 0.7rem;
+      border-radius: 100px;
+      background: oklch(0.95 0.04 45 / 0.15);
+      color: oklch(0.85 0.08 45);
+      border: 1px solid oklch(0.85 0.08 45 / 0.3);
+    }
+
+    /* === CTA === */
+    .cta-section {
+      text-align: center;
+      padding: 6rem 2rem;
+    }
+    .cta-section h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    .cta-section p {
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+    }
+
+    /* === BACK TO TOP === */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--text);
+      color: var(--bg);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      z-index: 99;
+      box-shadow: 0 4px 16px oklch(0 0 0 / 0.15);
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .back-to-top:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px oklch(0 0 0 / 0.2);
+    }
+
+    /* === MOUSE INTERACTIONS === */
+    .btn-magnetic {
+      transition: transform 0.3s ease-out;
+    }
+    .btn-magnetic:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Spotlight cursor effect */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), oklch(0.95 0.02 50 / 0.08), transparent 60%);
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: soft-light;
+    }
+
+    /* Card tilt on hover */
+    .tilt-card {
+      transform-style: preserve-3d;
+      transition: transform 0.15s ease-out;
+    }
+
+    /* Link underline animation */
+    .nav-links a {
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      width: 0;
+      height: 1.5px;
+      background: var(--accent);
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+      left: 0;
+    }
+    .nav-cta::after { display: none !important; }
+
+    /* === FOOTER === */
+    footer {
+      text-align: center;
+      padding: 2.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* === ANIMATIONS === */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 900px) {
+      .hero-content { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+      .hero-left { order: 2; }
+      .hero-right { order: 1; }
+      .hero-actions { justify-content: center; }
+      .portrait-frame { width: 280px; height: 340px; }
+      .float-badge { left: -10px; bottom: 40px; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .exp-preview { grid-template-columns: 1fr; }
+      .showcase-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STICKY NAV -->
+  <nav class="sticky-nav" id="stickyNav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Sam Chu</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#showcase">Showcase</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="hero-orb orb-3"></div>
+
+    <div class="scroll-indicator" id="scrollIndicator">
+      <span>Scroll to explore</span>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-left">
+        <div class="hero-eyebrow">Senior CT Radiographer</div>
+        <h1 class="hero-name">Sam <span>Chu</span></h1>
+        <p class="hero-role">Transforming Diagnostic Imaging</p>
+        <p class="hero-bio">
+          11+ years of clinical excellence across world-class hospitals and innovative healthcare startups. From setup to scan — building imaging services from the ground up.
+        </p>
+        <div class="hero-actions">
+          <a href="resume.html" class="btn btn-primary">
+            <i data-lucide="file-text" width="16" height="16"></i>
+            View Full Resume
+          </a>
+
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="portrait-frame">
+          <div class="portrait-deco deco-1"></div>
+          <img src="images/hero-portrait.jpg" alt="Sam Chu - Senior CT Radiographer" loading="eager" decoding="async" fetchpriority="high">
+          <div class="portrait-deco deco-2"></div>
+          <div class="bubble bubble-1"></div>
+          <div class="bubble bubble-2"></div>
+          <div class="bubble bubble-3"></div>
+          <div class="bubble bubble-4"></div>
+          <div class="bubble bubble-5"></div>
+          <div class="bubble bubble-6"></div>
+          <div class="bubble bubble-7"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-num">11+</div>
+        <div class="stat-label">Years Clinical</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Founding Teams</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Institutions</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">1</div>
+        <div class="stat-label">Country Licensed</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT TEASER -->
+  <section id="about" class="about-section">
+    <div class="about-bg"></div>
+    <div class="about-content reveal">
+      <div class="about-backdrop">
+        <div class="section-tag">About</div>
+        <h2 class="section-title" style="margin-bottom: 1.5rem;">More Than Just Scans</h2>
+        <p>
+          With a strong foundation in <strong>radiation physics</strong> and <strong>human physiology</strong>, I don't just follow protocols — I understand <span class="accent-text">why</span> each decision matters. This allows me to optimize every scan for the perfect balance of diagnostic quality and patient safety.
+        </p>
+        <p>
+          I've been part of <strong>three founding teams</strong> launching new imaging services from the ground up — navigating licensing, building workflows, and configuring systems that set the standard for operational excellence.
+        </p>
+        <a href="resume.html#about" class="btn btn-ghost" style="margin-top: 0.5rem;">
+          Read More <i data-lucide="arrow-right" width="14" height="14"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="skills-section">
+    <div class="section-header reveal">
+      <div class="section-tag">Expertise</div>
+      <h2 class="section-title">Clinical & Technical Skills</h2>
+    </div>
+    <div class="skills-grid reveal">
+      <div class="skill-block">
+        <h4>Clinical Excellence</h4>
+        <ul>
+          <li>CT Imaging & Protocols</li>
+          <li>General Radiography</li>
+          <li>CTCA Workflow</li>
+          <li>Dose Monitoring & QA</li>
+          <li>Imaging-Guided Procedures</li>
+        </ul>
+      </div>
+      <div class="skill-block">
+        <h4>Technical Infrastructure</h4>
+        <ul>
+          <li>PACS Setup & Integration</li>
+          <li>Teleradiology Networks</li>
+          <li>Cloud Storage Config</li>
+          <li>Equipment Installation</li>
+          <li>AI Tools Integration</li>
+        </ul>
+      </div>
+      <div class="skill-block">
+        <h4>Operations & Leadership</h4>
+        <ul>
+          <li>MOH / HCSA Compliance</li>
+          <li>Radiological Licensing</li>
+          <li>Workflow Design</li>
+          <li>Team Leadership</li>
+          <li>QA Manual Development</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE PREVIEW -->
+  <section id="experience">
+    <div class="section-header reveal">
+      <div class="section-tag">Career</div>
+      <h2 class="section-title">Recent Experience</h2>
+    </div>
+    <div class="exp-preview reveal">
+      <div class="exp-card">
+        <div class="exp-date">2025 — Present</div>
+        <div class="exp-role">Radiographer / Section Leader</div>
+        <div class="exp-org">Morrow Medical by Seveno Capital</div>
+        <span class="exp-badge">Founding Team</span>
+      </div>
+      <div class="exp-card">
+        <div class="exp-date">2023 — 2025</div>
+        <div class="exp-role">Senior Radiographer / CT Lead</div>
+        <div class="exp-org">DA Medsuites by Doctor Anywhere</div>
+        <span class="exp-badge">Founding Team</span>
+      </div>
+      <div class="exp-card">
+        <div class="exp-date">2022 — 2023</div>
+        <div class="exp-role">Senior Radiographer / CT Lead</div>
+        <div class="exp-org">Early Medical Centre by MiRXES</div>
+        <span class="exp-badge">Founding Team</span>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 2rem;">
+      <a href="resume.html#experience" class="btn btn-ghost">
+        View Full Timeline <i data-lucide="arrow-right" width="14" height="14"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- VISUAL SHOWCASE -->
+  <section id="showcase" class="showcase-section">
+    <div class="section-header reveal">
+      <div class="section-tag">Showcase</div>
+      <h2 class="section-title">Projects & Systems</h2>
+    </div>
+    <div class="showcase-grid reveal">
+      <div class="showcase-item">
+        <img src="images/showcase-1.jpg" alt="CT Protocol Optimization" loading="lazy" decoding="async">
+        <div class="showcase-caption">
+          <h4>CT Protocol Optimization</h4>
+          <p class="showcase-tagline">Dose-reduced imaging protocols for vulnerable populations</p>
+          <div class="showcase-details">
+            <p>Developed and validated low-dose CT protocols specifically for pediatric and geriatric patients, reducing radiation exposure by up to <strong>40%</strong> while maintaining diagnostic image quality.</p>
+            <ul>
+              <li>Custom tube current modulation algorithms</li>
+              <li>Pediatric-specific kernel optimization</li>
+              <li>Iterative reconstruction parameter tuning</li>
+            </ul>
+            <div class="showcase-meta">
+              <span class="meta-tag">Dose Reduction</span>
+              <span class="meta-tag">QA</span>
+              <span class="meta-tag">Pediatric</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="showcase-item">
+        <img src="images/showcase-2.jpg" alt="PACS & Infrastructure" loading="lazy" decoding="async">
+        <div class="showcase-caption">
+          <h4>PACS & Teleradiology Infrastructure</h4>
+          <p class="showcase-tagline">Cloud-based imaging networks from scratch</p>
+          <div class="showcase-details">
+            <p>Led the architecture and deployment of cloud-native PACS systems across three healthcare startups, enabling seamless image sharing between clinics, radiologists, and referring physicians.</p>
+            <ul>
+              <li>End-to-end DICOM routing & HL7 integration</li>
+              <li>Multi-site VPN tunnel configuration</li>
+              <li>AI-assisted workflow automation</li>
+            </ul>
+            <div class="showcase-meta">
+              <span class="meta-tag">PACS</span>
+              <span class="meta-tag">Cloud</span>
+              <span class="meta-tag">Integration</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" class="cta-section reveal">
+    <h2>Let's Work Together</h2>
+    <p>Whether you're building a new imaging service or need an experienced radiographer — I'd love to connect.</p>
+    <div class="hero-actions" style="justify-content: center;">
+      <a href="mailto:samchuchu.sg@gmail.com" class="btn btn-primary">
+        <i data-lucide="mail" width="16" height="16"></i>
+        Get in Touch
+      </a>
+      <a href="https://linkedin.com/in/samchuchu" class="btn btn-ghost" target="_blank">
+        <i data-lucide="linkedin" width="16" height="16"></i>
+        LinkedIn
+      </a>
+    </div>
+  </section>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Sam Chu. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Init icons
+    lucide.createIcons();
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // Sticky nav visibility
+    const stickyNav = document.getElementById('stickyNav');
+    const scrollIndicator = document.getElementById('scrollIndicator');
+    const backToTop = document.getElementById('backToTop');
+    const hero = document.querySelector('.hero');
+
+    const navObserver = new IntersectionObserver(([entry]) => {
+      stickyNav.classList.toggle('visible', !entry.isIntersecting);
+    }, { threshold: 0 });
+    navObserver.observe(hero);
+
+    // Back to top visibility + scroll indicator hide
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollIndicator) {
+        scrollIndicator.style.opacity = scrollY > 100 ? '0' : '1';
+      }
+      if (backToTop) {
+        backToTop.classList.toggle('visible', scrollY > 600);
+      }
+    });
+
+    if (backToTop) {
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // === SPOTLIGHT CURSOR ===
+    document.addEventListener('mousemove', (e) => {
+      document.body.style.setProperty('--mouse-x', e.clientX + 'px');
+      document.body.style.setProperty('--mouse-y', e.clientY + 'px');
+    });
+
+    // === MAGNETIC BUTTONS ===
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+      });
+    });
+
+    // === CARD TILT ===
+    document.querySelectorAll('.skill-block, .exp-card, .showcase-item').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const cx = rect.width / 2;
+        const cy = rect.height / 2;
+        const rotateX = ((y - cy) / cy) * -5;
+        const rotateY = ((x - cx) / cx) * 5;
+        card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+
+    // === STATS COUNT-UP ===
+    const statNums = document.querySelectorAll('.stat-num');
+    const countUpObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.dataset.counted) {
+          entry.target.dataset.counted = 'true';
+          const text = entry.target.textContent.trim();
+          const numMatch = text.match(/^(\d+)/);
+          if (numMatch) {
+            const target = parseInt(numMatch[1], 10);
+            const suffix = text.replace(/^\d+/, '');
+            const duration = 1500;
+            const startTime = performance.now();
+            const animate = (now) => {
+              const elapsed = now - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              const current = Math.round(eased * target);
+              entry.target.textContent = current + suffix;
+              if (progress < 1) requestAnimationFrame(animate);
+            };
+            requestAnimationFrame(animate);
+          }
+        }
+      });
+    }, { threshold: 0.5 });
+    statNums.forEach(el => countUpObserver.observe(el));
+  </script>
+</body>
+</html>

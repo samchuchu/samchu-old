@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sam Chu | Loading...</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #0a0a0a;
+    }
+    
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <video id="intro-video" autoplay muted playsinline>
+    <source src="https://raw.githubusercontent.com/samchuchu/samchu-old/main/title-vid/Final2.mp4" type="video/mp4">
+  </video>
+
+  <script>
+    const video = document.getElementById('intro-video');
+    const videoSource = video.querySelector('source');
+
+    // Device detection - check if mobile/tablet
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+      || window.innerWidth <= 768;
+
+    // Randomly select between 2 video versions
+    const randomVersion = Math.random() < 0.5 ? 1 : 2;
+
+    // Set appropriate video source
+    if (isMobile) {
+      // Mobile: randomly choose between portrait_sound.mp4 and portrait_sound2.mp4
+      videoSource.src = randomVersion === 1
+        ? 'https://github.com/samchuchu/samchu-old/raw/refs/heads/main/title-vid/portrait_sound.mp4'
+        : 'https://github.com/samchuchu/samchu-old/raw/refs/heads/main/title-vid/portrait_sound2.mp4';
+    } else {
+      // Desktop: randomly choose between Final2.mp4 and Final3.mp4
+      videoSource.src = randomVersion === 1
+        ? 'https://raw.githubusercontent.com/samchuchu/samchu-old/main/title-vid/Final2.mp4'
+        : 'https://github.com/samchuchu/samchu-old/raw/refs/heads/main/title-vid/Final3.mp4';
+    }
+    video.load();
+    
+    // Video ended - redirect to resume
+    video.addEventListener('ended', function() {
+      window.location.href = 'resume.html';
+    });
+    
+    // Fallback redirect after video duration
+    setTimeout(function() {
+      window.location.href = 'resume.html';
+    }, 15000);
+    
+    // Handle video errors
+    video.addEventListener('error', function(e) {
+      console.log('Video error:', e);
+      setTimeout(function() {
+        window.location.href = 'resume.html';
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
